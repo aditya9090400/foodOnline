@@ -10,7 +10,7 @@ from .models import User
 def registerUser(request):
     if request.user.is_authenticated:
         messages.warning(request, 'You are already logged in!')
-        return redirect('dashboard')
+        return redirect('home')
     elif request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
@@ -38,3 +38,8 @@ def registerUser(request):
         'form': form,
     }
     return render(request, 'accounts/registerUser.html', context)
+
+
+def registerVendor(request):
+    context = {}
+    return render(request, 'accounts/registerVendor.html', context)
