@@ -4,6 +4,7 @@ from django.contrib import messages, auth
 from .forms import UserForm
 from .models import User
 from .forms import VendorForm
+from vendor.models import Vendor
 from accounts.models import UserProfile
 from accounts.utils import detectUser, send_verification_email
 from django.utils.http import urlsafe_base64_decode
