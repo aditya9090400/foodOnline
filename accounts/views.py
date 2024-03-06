@@ -127,7 +127,17 @@ def login(request):
     elif request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-
+        
+        # Check if the user is already registered but not activated
+        user_ = User.objects.filter(email=email)
+        if user_.exists() and not(user_.first().is_active):
+            messages.error(
+                request,
+                'Your account is not activated yet! Please check your email for the activation link.'
+            )
+            return redirect('login')
+        
+        # Authenticate the user
         user = auth.authenticate(email=email, password=password)
 
         if user is not None:
