@@ -23,7 +23,7 @@ from marketplace import views as MarketplaceViews
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.index, name="home"),
+    path("", views.home, name="home"),
     
     # CART
     path('cart/', MarketplaceViews.cart, name='cart'),
